@@ -8,7 +8,7 @@ Requires at least: 3.8
 Tested up to: 3.8
 Stable tag: 1.0
 
-WC Cancel Order adds order cancellation functionality to woocommerce.
+WC Cancel Order plugin adds order cancellation functionality to your woocommerce store.
 
 == Description ==
 
