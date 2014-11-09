@@ -1,5 +1,5 @@
 === WC Cancel Order ===
-Contributors: 
+Contributors: jodhavishalsingh 
 Donate link:
 Tags: woocommerce cancel order, woocommerce
 License: GPLv3
