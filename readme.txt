@@ -1,5 +1,5 @@
 === WC Cancel Order ===
-Contributors: 
+Contributors: jodhavishalsingh 
 Donate link:
 Tags: woocommerce cancel order, woocommerce
 License: GPLv3
@@ -36,6 +36,10 @@ Ans Just write at plugin support forum.
 
 
 == Screenshots ==
+
+1. Admin Cancel Order Page Screen-1
+2. Admin Cancel Order Page Screen-2
+3. Myaccount Page
 
 
 == Changelog ==
