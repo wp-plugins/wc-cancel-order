@@ -28,11 +28,11 @@ WC Cancel Order
 
 == Frequently Asked Questions ==
 
-1. Admin or Customer Not receiving the request notification mail ?
-Ans. woocommerce has added the mail action ("woocommerce_email_actions") in upcoming woocommerce version 3.0 , so simply you have to wait till woocommerce version 3.0 release 
+= Admin or Customer Not receiving the request notification mail ? =
+woocommerce has added the mail action ("woocommerce_email_actions") in upcoming woocommerce version 3.0 , so simply you have to wait till woocommerce version 3.0 release 
 or just need to edit the woocommerce core file and add  the action in woocommerce core file.
-2. having issue or need help with WC Cancel Order plugin ?
-Ans Just write at plugin support forum.
+= having issue or need help with WC Cancel Order plugin ? =
+Just write at plugin support forum.
 
 
 == Screenshots ==
