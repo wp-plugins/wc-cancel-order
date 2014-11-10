@@ -4,7 +4,7 @@ Plugin Name: WC Cancel Order
 Plugin URI: http://vsjodha.com
 Description: allow customer to Send Order Cancel Request from my account page to woocommerce admin.
 Author: Vikram Singh
-Version: 1.0
+Version: 1.1
 Author URI: http://vsjodha.com
 Text Domain: wc-cancel-order
 License: GPLv3
@@ -25,7 +25,7 @@ class WC_Cancel_Order {
 
 		add_action( 'admin_menu',array($this,'admin_menu'));
 
-		add_action('admin_head',array($this,'wc_cancel_admin_head'));
+		add_action('admin_enqueue_scripts',array($this,'wc_cancel_admin_head'));
 
 		add_filter( 'woocommerce_email_actions',array($this,'add_wc_cancel_email_actions'));
 

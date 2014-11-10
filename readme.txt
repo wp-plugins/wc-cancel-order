@@ -22,15 +22,15 @@ WC Cancel Order
 == Installation ==
 
 1. Simply install and activate the plugin.
-2. after installtion the order cancell reuest button will appear at woocommerce my account page.
+2. After installation the order cancel request button will appear at woocommerce my account page.
 3. wc cancel order admin menu >> Dashboard >> woocommerce >> Cancel Requests. 
 
 
 == Frequently Asked Questions ==
 
 = Admin or Customer Not receiving the request notification mail ? =
-woocommerce has added the mail action ("woocommerce_email_actions") in upcoming woocommerce version 3.0 , so simply you have to wait till woocommerce version 3.0 release 
-or just need to edit the woocommerce core file and add  the action in woocommerce core file.
+woocommerce has added the mail action ("woocommerce email actions") in upcoming woocommerce version 3.0 , so simply you have to wait till woocommerce version 3.0 release
+or just need to edit the woocommerce core file and add the action in woocommerce core file.
 = having issue or need help with WC Cancel Order plugin ? =
 Just write at plugin support forum.
 
@@ -44,5 +44,8 @@ Just write at plugin support forum.
 
 == Changelog ==
 
-= 1.0 =
-- Initial Revision
+= 1.0 - 10/11/2014 =
+* Fix - Admin css hook fixed.
+
+= 1.0 - 09/11/2014 =
+* Initial Revision.
