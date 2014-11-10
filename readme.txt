@@ -23,7 +23,7 @@ WC Cancel Order
 
 1. Simply install and activate the plugin.
 2. After installation the order cancel request button will appear at woocommerce my account page.
-3. wc cancel order admin menu >> Dashboard >> woocommerce >> Cancel Requests. 
+3. WC Cancel Order Admin Dashboard >>> woocommerce >> Cancel Requests. 
 
 
 == Frequently Asked Questions ==
