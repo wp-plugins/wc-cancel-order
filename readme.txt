@@ -44,7 +44,7 @@ Just write at plugin support forum.
 
 == Changelog ==
 
-= 1.0 - 10/11/2014 =
+= 1.1 - 10/11/2014 =
 * Fix - Admin css hook fixed.
 
 = 1.0 - 09/11/2014 =
