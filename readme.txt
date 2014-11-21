@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 2.2.8
+Stable tag: 3.8
 
 WC Cancel Order plugin adds order cancellation functionality to your woocommerce store.
 
