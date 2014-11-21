@@ -4,7 +4,7 @@ Plugin Name: WC Cancel Order
 Plugin URI: http://vsjodha.com
 Description: allow customer to Send Order Cancel Request from my account page to woocommerce admin.
 Author: Vikram Singh
-Version: 1.1
+Version: 1.2
 Author URI: http://vsjodha.com
 Text Domain: wc-cancel-order
 License: GPLv3
@@ -404,7 +404,7 @@ class WC_Cancel_Order {
 
 	public function mark_order_as_cancell_request() {
 
-		if ( ! current_user_can( 'edit_shop_orders' ) ) {
+		if ( ! is_user_logged_in() ) {
 
 			wp_die( __( 'You do not have sufficient permissions to access this page.', 'woocommerce' ), '', array( 'response' => 403 ) );
 
