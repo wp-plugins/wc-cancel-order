@@ -28,8 +28,8 @@ class Wc_Email_Cancel_Request_Reject_Order extends WC_Email {
 		$this->title 			= __( 'Cancel Request Rejected', 'woocommerce' );
 		$this->description		= __( 'This is an order notification sent to the admin and customer when cthe cancellation order request is rejected.', 'woocommerce' );
 
-		$this->heading 			= __( 'Apologise for inconvenience!', 'woocommerce' );
-		$this->subject      	= __( 'Your {site_title} order receipt from {order_date}', 'woocommerce' );
+		$this->heading 			= __( 'Order Cancellation Request has been rejected', 'woocommerce' );
+		$this->subject      	= __( 'Order NO: {order_number} Cancellation Request has been rejected', 'woocommerce' );
 
 		$this->template_html 	= 'emails/cancell-request-rejecte-order.php';
 		$this->template_plain 	= 'emails/plain-cancell-request-rejecte-order.php';
@@ -62,8 +62,8 @@ class Wc_Email_Cancel_Request_Reject_Order extends WC_Email {
 		if ( ! $this->is_enabled() || ! $this->get_recipient() ) {
 			return;
 		}
-
-		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+		$rec = array($this->get_recipient(),get_option( 'admin_email' ));
+		$this->send($rec, $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 	}
 
 	/**

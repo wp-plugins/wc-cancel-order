@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-if ( ! class_exists( 'WC_Email_Cancel_Request_Order' ) ) :
+if ( ! class_exists( 'Wc_Email_Cancel_Request_Approved_Order' ) ) :
 
 /**
  * Customer Processing Order Email
@@ -17,31 +17,29 @@ if ( ! class_exists( 'WC_Email_Cancel_Request_Order' ) ) :
  * @author 		WooThemes
  * @extends 	WC_Email
  */
-class WC_Email_Cancel_Request_Order extends WC_Email {
+class Wc_Email_Cancel_Request_Approved_Order extends WC_Email {
 
 	/**
 	 * Constructor
 	 */
 	function __construct() {
-		
-		$this->id 				= 'cancel_order_request';
-		$this->title 			= __( 'Cancel Request', 'woocommerce' );
-		$this->description		= __( 'This is an order notification sent to the admin and customer when customer raise the cancellation order request.', 'woocommerce' );
 
-		$this->heading 			= __( 'Order Cancellation Request has been raised', 'woocommerce' );
-		$this->subject      	= __( 'Order No: {order_number} Cancellation Request has been raised', 'woocommerce' );
-		
-		$this->template_html 	= 'emails/cancell-request-order.php';
-		$this->template_plain 	= 'emails/emails/plain-cancell-request-order.php';
+		$this->id 				= 'cancel_order_request_approved';
+		$this->title 			= __( 'Cancel Request Approved', 'woocommerce' );
+		$this->description		= __( 'This is an order notification sent to the admin and customer when the cancellation order request is approved.', 'woocommerce' );
+
+		$this->heading 			= __( 'Order Cancellation Request approved', 'woocommerce' );
+		$this->subject      	= __( 'Order No: {order_number} Cancellation Request approved ', 'woocommerce' );
+
+		$this->template_html 	= 'emails/cancell-request-approve-order.php';
+		$this->template_plain 	= 'emails/cancell-request-approve-order.php';
 
 		// Triggers for this email
-		add_action( 'woocommerce_order_status_pending_to_cancel-request_notification', array( $this, 'trigger' ) );
-		add_action( 'woocommerce_order_status_on-hold_to_cancel-request_notification', array( $this, 'trigger' ) );
-		add_action( 'woocommerce_order_status_processing_to_cancel-request_notification', array( $this, 'trigger' ) );
+		add_action( 'woocommerce_order_status_cancel-request_to_cancelled_notification', array( $this, 'trigger' ) );
 		// Call parent constructor
 		parent::__construct();
 	}
-	
+
 	/**
 	 * trigger function.
 	 *
@@ -62,11 +60,10 @@ class WC_Email_Cancel_Request_Order extends WC_Email {
 		}
 
 		if ( ! $this->is_enabled() || ! $this->get_recipient() ) {
-			
 			return;
 		}
 		$rec = array($this->get_recipient(),get_option( 'admin_email' ));
-		$this->send($rec,$this->get_subject(),$this->get_content(),$this->get_headers(),$this->get_attachments() );
+		$this->send($rec, $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 	}
 
 	/**
@@ -106,5 +103,3 @@ class WC_Email_Cancel_Request_Order extends WC_Email {
 
 
 endif;
-
-

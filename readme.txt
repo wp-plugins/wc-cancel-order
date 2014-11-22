@@ -44,6 +44,10 @@ Just write at plugin support forum.
 
 == Changelog ==
 
+= 1.3 - 22/11/2014 =
+* Fix - Cancel Request Approve Notification E-Mail added.
+* Fix - Tool-tip fixed for WC Cancel Order admin dashboard icons.
+
 = 1.2 - 21/11/2014 =
 * Fix - Cancel Request Permission issue fixed.
 

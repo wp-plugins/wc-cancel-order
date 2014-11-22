@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 <?php do_action('woocommerce_email_header', $email_heading); ?>
 
-<p><?php _e( "Your order Cancel Request has been rejected and is now being processed. Your order details are shown below for your reference:", 'woocommerce' ); ?></p>
+<p><?php _e( "Cancel Request for Order No: ".$order->get_order_number(). " has been Rejected and order is now being processed. Your order details are shown below for your reference:", 'woocommerce' ); ?></p>
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text ); ?>
 

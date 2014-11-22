@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 echo $email_heading . "\n\n";
 
-echo __( "Cancel Request for Order No: ".$order->get_order_number(). " has been Rejected and order is now being processed. Your order details are shown below for your reference:", 'woocommerce' ) . "\n\n";
+echo __( "Cancel Request for Order No: ".$order->get_order_number(). " has been Approved and order is now Cancelled. Your order details are shown below for your reference:", 'woocommerce' ) . "\n\n";
 
 echo "****************************************************\n\n";
 
