@@ -4,7 +4,7 @@ Plugin Name: WC Cancel Order
 Plugin URI: http://vsjodha.com
 Description: allow customer to Send Order Cancel Request from my account page to woocommerce admin.
 Author: Vikram Singh
-Version: 1.4
+Version: 1.5
 Author URI: http://vsjodha.com
 Text Domain: wc-cancel-order
 License: GPLv3
@@ -31,6 +31,14 @@ class WC_Cancel_Order{
         add_action('wp_ajax_mark_order_as_cancell_request', array($this, 'mark_order_as_cancell_request'));
         add_filter('woocommerce_my_account_my_orders_actions', array($this, 'add_wc_cancel_my_account_orders_status'), 100, 2);
         add_filter('woocommerce_email_classes', array($this, 'add_wc_cancel_request_order_woocommerce_email'),100,1);
+        add_action( 'woocommerce_order_status_cancell_request_to_cancelled', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+        add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+        add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+        add_action( 'woocommerce_order_status_on-hold_to_cancelled', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+        add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+        add_action( 'woocommerce_order_status_completed_to_refunded', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+        add_action( 'woocommerce_order_status_on-hold_to_refunded', array( $this, 'wc_cancel_restore_order_stock' ), 10, 1 );
+
 
     }
 
@@ -241,6 +249,35 @@ class WC_Cancel_Order{
         }
 
         return $actions;
+    }
+
+    function wc_cancel_restore_order_stock( $order_id ) {
+
+        $order = wc_get_order( $order_id );
+
+        if ( ! get_option('woocommerce_manage_stock') == 'yes' && ! sizeof( $order->get_items() ) > 0 ) {
+            return;
+        }
+
+        foreach ( $order->get_items() as $item ) {
+
+            if ( $item['product_id'] > 0 ) {
+                $_product = $order->get_product_from_item( $item );
+
+                if ( $_product && $_product->exists() && $_product->managing_stock() ) {
+
+                    $old_stock = $_product->stock;
+
+                    $qty = apply_filters( 'woocommerce_order_item_quantity', $item['qty'], $this, $item );
+
+                    $new_quantity = $_product->increase_stock( $qty );
+
+                    $order->add_order_note( sprintf( __( 'Item #%s stock incremented from %s to %s.', 'woocommerce' ), $item['product_id'], $old_stock, $new_quantity) );
+
+                    $order->send_stock_notifications( $_product, $new_quantity, $item['qty'] );
+                }
+            }
+        }
     }
 
     function wc_cancel_dashboard()    {
