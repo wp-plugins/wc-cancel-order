@@ -244,7 +244,7 @@ class WC_Cancel_Order{
         }
 
 
-        if ($the_order->has_status(array('on-hold', 'pending', 'processing')) && !$item_count['item_count']) {
+        if ($the_order->has_status( apply_filters( 'wc_cancel_valid_order_statuses', array('on-hold', 'pending', 'processing') ) ) && !$item_count['item_count']) {
             $actions['cancelled'] = array('url' => wp_nonce_url(admin_url('admin-ajax.php?action=mark_order_as_cancell_request&order_id=' . $order->id), 'woocommerce-mark-order-cancell-request-myaccount'), 'name' => __('Send Cancel Request', 'woocommerce'), 'action' => "cancel-request");
         }
 
