@@ -36,7 +36,7 @@ class WC_Cancel_Dashboard extends WP_List_Table{
         $post = get_post($item['order_id']);
 
         if ($item['order_id']) {
-            $the_order = wc_get_order($item['order_id']);
+            $the_order = new WC_Order($item['order_id']);
         }
 
         switch ($column) {
